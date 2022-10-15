@@ -5,18 +5,20 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 @Document
 @Getter
 @Setter
-public class Client {
+public class Account {
 
     @Id
     private String id;
-    private String name;
-    private String lastName;
     private Integer type;
-    private List<Integer> lstAccount;
+    private BigDecimal commission;
+    private Integer movementCount;
+
+
+
 
 }
