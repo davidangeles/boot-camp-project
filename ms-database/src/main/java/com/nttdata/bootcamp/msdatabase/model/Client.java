@@ -17,6 +17,6 @@ public class Client {
     private String name;
     private String lastName;
     private Integer type;
-    private List<Integer> lstAccount;
+    private List<String> lstAccount;
 
 }

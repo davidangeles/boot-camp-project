@@ -12,6 +12,8 @@
 
     <modules>
         <module>ms-database</module>
+        <module>ms-commons-base</module>
+        <module>ms-client</module>
     </modules>
 
     <properties>

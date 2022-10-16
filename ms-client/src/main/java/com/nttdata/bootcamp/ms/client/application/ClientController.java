@@ -1,7 +1,6 @@
-package com.nttdata.bootcamp.msdatabase.application;
+package com.nttdata.bootcamp.ms.client.application;
 
 import com.nttdata.bootcamp.ms.commons.base.domain.ClientDTO;
-import com.nttdata.bootcamp.msdatabase.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -10,7 +9,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("client")
 public class ClientController {
 
     @Autowired
@@ -26,6 +24,4 @@ public class ClientController {
     public Flux<ClientDTO> listAll() {
         return clientService.listAll();
     }
-
-
 }
