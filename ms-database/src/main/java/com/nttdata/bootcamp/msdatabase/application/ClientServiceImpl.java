@@ -32,6 +32,10 @@ public class ClientServiceImpl implements ClientService {
 
         return Mono.just(client).flatMap(clientRepository::insert).map(p -> toDto(p));
     }
+    @Override
+    public Mono<ClientDTO> findById(String code){
+        return clientRepository.findById(code).map(p -> toDto(p));
+    }
 
     @Override
     public Flux<ClientDTO> listAll() {

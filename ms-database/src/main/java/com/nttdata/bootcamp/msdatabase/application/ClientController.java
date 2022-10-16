@@ -22,6 +22,11 @@ public class ClientController {
         return clientService.create(clientDTO);
     }
 
+    @GetMapping(value = "findById/{id}")
+    public Mono<ClientDTO> findById(@PathVariable("id") String code) {
+        return clientService.findById(code);
+    }
+
     @GetMapping(value = "listAll", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ClientDTO> listAll() {
         return clientService.listAll();

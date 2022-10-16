@@ -1,8 +1,6 @@
 package com.nttdata.bootcamp.ms.client.application;
 
 import com.nttdata.bootcamp.ms.commons.base.domain.ClientDTO;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -18,6 +16,14 @@ public class ClientServiceImpl implements ClientService {
         return client.post()
                 .uri("/client/create")
                 .body(Mono.just(clientDTO), ClientDTO.class)
+                .retrieve()
+                .bodyToMono(ClientDTO.class);
+    }
+
+    @Override
+    public Mono<ClientDTO> findById(String code) {
+        return client.get()
+                .uri("/client/findById/{id}", code)
                 .retrieve()
                 .bodyToMono(ClientDTO.class);
     }

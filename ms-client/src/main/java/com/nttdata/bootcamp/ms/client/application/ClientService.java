@@ -7,6 +7,8 @@ import reactor.core.publisher.Mono;
 public interface ClientService {
 
     Mono<ClientDTO> create(ClientDTO clientDTO);
+
+    Mono<ClientDTO> findById(String code);
     Flux<ClientDTO> listAll();
 
 }
