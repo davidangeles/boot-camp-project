@@ -14,6 +14,7 @@
         <module>ms-database</module>
         <module>ms-commons-base</module>
         <module>ms-client</module>
+		<module>ms-account</module>
         <module>ms-transaction</module>
     </modules>
 
