@@ -29,4 +29,14 @@ public class ClientController {
     public Flux<ClientDTO> listAll() {
         return clientService.listAll();
     }
+
+    @PostMapping("update")
+    public void update(@RequestBody ClientDTO clientDTO) {
+        clientService.update(clientDTO);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void delete(@PathVariable("id") String code) {
+        clientService.delete(code);
+    }
 }

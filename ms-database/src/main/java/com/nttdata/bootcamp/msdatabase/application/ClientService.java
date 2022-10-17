@@ -12,4 +12,8 @@ public interface ClientService {
 
     Flux<ClientDTO> listAll();
 
+    void update(ClientDTO clientDTO);
+
+    void delete(String code);
+
 }

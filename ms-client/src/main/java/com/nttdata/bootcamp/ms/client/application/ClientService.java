@@ -11,4 +11,8 @@ public interface ClientService {
     Mono<ClientDTO> findById(String code);
     Flux<ClientDTO> listAll();
 
+    void update(ClientDTO clientDTO);
+
+    void delete(String code);
+
 }

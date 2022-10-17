@@ -1,7 +1,6 @@
 package com.nttdata.bootcamp.msdatabase.application;
 
 import com.nttdata.bootcamp.ms.commons.base.domain.ClientDTO;
-import com.nttdata.bootcamp.msdatabase.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,6 +29,16 @@ public class ClientController {
     @GetMapping(value = "listAll", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<ClientDTO> listAll() {
         return clientService.listAll();
+    }
+
+    @PostMapping("update")
+    public void update(@RequestBody ClientDTO clientDTO) {
+        clientService.update(clientDTO);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public void delete(@PathVariable("id") String code) {
+        clientService.delete(code);
     }
 
 

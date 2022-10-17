@@ -6,7 +6,7 @@ import com.nttdata.bootcamp.ms.commons.base.domain.ClientType;
 import com.nttdata.bootcamp.msdatabase.infraestructure.ClientRepository;
 import com.nttdata.bootcamp.msdatabase.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service; 
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -17,21 +17,11 @@ public class ClientServiceImpl implements ClientService {
 
     @Autowired
     ClientRepository clientRepository;
-     
     
     @Override
     public Mono<ClientDTO> create(ClientDTO clientDTO) {
-        Client client = new Client();
-        client.setId(clientDTO.getId());
-        client.setName(clientDTO.getName());
-        client.setLastName(clientDTO.getLastName());
-        client.setType(clientDTO.getType().getCode());
-
-        if (clientDTO.getLstAccount() != null) {
-            client.setLstAccount(clientDTO.getLstAccount().stream().map(AccountDTO::getId).collect(Collectors.toList()));
-        }
-
-        return Mono.just(client).flatMap(clientRepository::insert).map(p -> toDto(p));
+        return Mono.just(this.toDto(clientDTO))
+                .flatMap(clientRepository::insert).map(p -> toDto(p));
     }
     @Override
     public Mono<ClientDTO> findById(String code){
@@ -40,7 +30,18 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Flux<ClientDTO> listAll() {
-        return clientRepository.findAll().flatMap(p -> Flux.just(toDto(p)));
+        return clientRepository.findAll()
+                .flatMap(p -> Flux.just(toDto(p)));
+    }
+
+    @Override
+    public void update(ClientDTO clientDTO){
+        clientRepository.save(this.toDto(clientDTO));
+    }
+
+    @Override
+    public void delete(String code){
+        clientRepository.deleteById(code);
     }
 
     private ClientDTO toDto(Client client) {
@@ -50,5 +51,18 @@ public class ClientServiceImpl implements ClientService {
                 .type(ClientType.getFromCodeOrNull(client.getType()))
                 .lastName(client.getLastName())
                 .build();
+    }
+
+    private Client toDto(ClientDTO clientDTO) {
+        Client client = new Client();
+        client.setId(clientDTO.getId());
+        client.setName(clientDTO.getName());
+        client.setLastName(clientDTO.getLastName());
+        client.setType(clientDTO.getType().getCode());
+
+        if (clientDTO.getLstAccount() != null) {
+            client.setLstAccount(clientDTO.getLstAccount().stream().map(AccountDTO::getId).collect(Collectors.toList()));
+        }
+        return client;
     }
 }
