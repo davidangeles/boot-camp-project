@@ -12,4 +12,4 @@ Proyecto multi module implementado para el boot camp MS
 - **ms-transaction**
 
 ***
-Se añade archivo export POSTMAN para la prueba de los servicios REST
+Se añade archivo export POSTMAN para la prueba de los servicios REST --> Project -Bootcamp MS.postman_collection.json
