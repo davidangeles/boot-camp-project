@@ -1,5 +1,6 @@
 package com.nttdata.bootcamp.ms.account.application;
  
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
@@ -7,9 +8,10 @@ import com.nttdata.bootcamp.ms.commons.base.domain.AccountDTO;
  
 import reactor.core.publisher.Mono; 
 
+@Service
 public class AccountServiceImpl implements AccountService {
 	
-	  WebClient client = WebClient.create("http://localhost:8083");
+	  WebClient client = WebClient.create("http://localhost:8082");
 	 
 	@Override
 	public Mono<AccountDTO> create(AccountDTO accountDTO) { 
@@ -21,18 +23,18 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Mono<ServerResponse> cancel(Integer id) { 
+	public Mono<AccountDTO> cancel(String id) { 
         return client.get()
                 .uri("/account/cancel/{id}", id)
                 .retrieve()
-                .bodyToMono(ServerResponse.class);
+                .bodyToMono(AccountDTO.class);
 	}	
 	
 	@Override
-	public Mono<ServerResponse> associate(Integer id, Integer group) { 
+	public Mono<AccountDTO> associate(String id, Integer group) { 
 		   return client.get()
 	                .uri("/account/associate/{id}/{group}", id, group)
 	                .retrieve()
-	                .bodyToMono(ServerResponse.class);
+	                .bodyToMono(AccountDTO.class);
 	} 
 }

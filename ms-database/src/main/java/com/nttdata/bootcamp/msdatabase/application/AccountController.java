@@ -29,12 +29,12 @@ public class AccountController {
 	}
 	
 	@GetMapping("associate/{id}/{group}")
-	public  Mono<ServerResponse> associate(@PathVariable Integer id, @PathVariable Integer group) {
+	public  Mono<AccountDTO> associate(@PathVariable String id, @PathVariable Integer group) {
 		return accountService.associate(id, group); 
 	}
 	
 	@GetMapping("cancel/{id}")
-	public Mono<ServerResponse> cancel(@PathVariable Integer id) { 
+	public Mono<AccountDTO> cancel(@PathVariable String id) { 
 		return accountService.cancel(id); 
 	}
 	 

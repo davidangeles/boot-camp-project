@@ -9,9 +9,9 @@ public interface AccountService {
 
     Mono<AccountDTO> create(AccountDTO accountDTO);
 
-    Mono<ServerResponse> associate(Integer id, Integer group);
+    Mono<AccountDTO> associate(String id, Integer group);
     
-    Mono<ServerResponse> cancel(Integer id);
+    Mono<AccountDTO> cancel(String id);
     
     
 
