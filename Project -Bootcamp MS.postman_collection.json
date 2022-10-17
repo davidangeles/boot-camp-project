@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "50b09aa1-9ed7-4462-817a-d86e77df0d10",
+		"name": "Project -Bootcamp MS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21804198"
+	},
+	"item": [
+		{
+			"name": "DataBase",
+			"item": [
+				{
+					"name": "client-listAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/client/listAll"
+					},
+					"response": []
+				},
+				{
+					"name": "client-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\" : 4,\r\n    \"name\" : \"Prueba\",\r\n    \"lastName\" : \"Prueba\",\r\n    \"type\" : 1,\r\n    \"lstAccount\" : null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/client/create"
+					},
+					"response": []
+				},
+				{
+					"name": "client-findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/client/findById/634c75a97e321565bb0500ff"
+					},
+					"response": []
+				},
+				{
+					"name": "account-create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"type\" : 1,\r\n    \"comission\" : \"22.00\",\r\n    \"movementCount\" : 1,\r\n    \"accountGroup\" : 0,\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/account/create"
+					},
+					"response": []
+				},
+				{
+					"name": "account-associate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/account/associate/634dd39ee45d66168fd2b996/1"
+					},
+					"response": []
+				},
+				{
+					"name": "account-cancel",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Prueba\",\r\n    \"lastName\" : \"Prueba\",\r\n    \"type\" : 1,\r\n    \"lstAccount\" : null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8083/create"
+					},
+					"response": []
+				},
+				{
+					"name": "listAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8083/listAll"
+					},
+					"response": []
+				},
+				{
+					"name": "findById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8083/findById/634c75a97e321565bb0500ff"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"type\" : 1,\r\n    \"commission\" : \"22.00\",\r\n    \"movementCount\" : 1,\r\n    \"accountGroup\" : 0,\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8084/create"
+					},
+					"response": []
+				},
+				{
+					"name": "associate",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "cancel",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
